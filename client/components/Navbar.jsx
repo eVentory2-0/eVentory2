@@ -28,9 +28,11 @@ const Navbar = (props) => {
   const [isShow, setIsShow] = React.useState(true);  
   const handleClick = () => {setIsShow(s => !s)};
 
-
+console.log('Props: ', props);
   //for future engineers - if you type in a fake account you will get an error and this needs to be fixed. xoxo gossip girl
-if (props.user.name === undefined){
+  // if our user doesn't have any data added into post trying to login - rerender the loggedOut NavBar and stay
+  // on the login page
+  if (!props.user){
   return (
     <div>
       <NavBarLoggedOut />

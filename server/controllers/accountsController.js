@@ -62,13 +62,15 @@ accountsController.createAccount = async (req , res, next ) => {
   try {
     // create an object with the query text, and the values to insert into the query
     const query = {
-      text:'INSERT INTO accounts (name, email, password, type) VALUES ($1, $2, $3, $4)',
+      text:'INSERT INTO accounts (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *',
       values: [name, email, password, type],
     }
     // query the database for all accounts in accounts
-    await client.query(query);
+    const result = await client.query(query);
+
+    console.log('Result: ', result.rows[0]);
     // store the result of the query into res.locals.accounts
-    res.locals.message = `Account ${name} has been created`
+    res.locals.message = result.rows[0];
     // return next
     return next();
   }

@@ -40,7 +40,7 @@ const Login = (props) => {
         .catch(err => {
           console.log('were getting an error',err);
           alert('Wrong username/password');
-          props.setUser({user: {name: undefined}});
+          // props.setUser({user: {name: undefined}}); 
           return;
         });
         

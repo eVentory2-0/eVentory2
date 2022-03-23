@@ -7,30 +7,30 @@ const Inventory = (props) => {
     // displays all values shown in columns for each inventory item
     <div className = 'inventory-container' >
       <h4 className = 'id-column'>{props.invInfo.id}</h4>
-      <h4 className = 'other-column'>{props.invInfo.name.toUpperCase()}</h4>
+      <h4 className = 'other-column' key={14}>{props.invInfo.name.toUpperCase()}</h4>
       <h4 className = 'quantity-column'>{props.invInfo.quantity}</h4>
-      <h4 className = 'other-column'>{props.invInfo.category.toUpperCase()}</h4>
-      <h4 className = 'other-column'>{props.invInfo.location.toUpperCase()}</h4>
+      <h4 className = 'other-column' key={15}>{props.invInfo.category.toUpperCase()}</h4>
+      <h4 className = 'other-column' key={16}>{props.invInfo.location.toUpperCase()}</h4>
       {/* popup for add items, no info is required. only add info you want changed */}
       <Popup trigger={<button type="button" className ='update-delete-buttons'>Update</button>}>
         <form onSubmit={(e) => props.updatedItem(e)} >
           <input type="hidden" name="item-id" value={props.invInfo.id} />
-          <div className="input-container">
+          <div className="input-container" key={7}>
             <input type="text" name="item-name" placeholder="Name" value = {undefined}/>
           </div>
-          <div className="input-container">
+          <div className="input-container" key={8}>
             <input type="number" name="item-quantity" placeholder="Quantity" value = {undefined}  />
           </div>
-          <div className="input-container">
+          <div className="input-container" key={9}>
             <input type="text" name="item-info" placeholder="Info" value = {undefined}/>
           </div>
-          <div className="input-container">
+          <div className="input-container" key={10}>
             <input type="text" name="item-category" placeholder="Category" value = {undefined}  />
           </div>
-          <div className="input-container">
+          <div className="input-container" key={11}>
             <input type="text" name="item-location" placeholder="Location" value = {undefined} />
           </div>
-          <div className="button-container">
+          <div className="button-container" key={12}>
             <input type="submit" />
           </div>
         </form>

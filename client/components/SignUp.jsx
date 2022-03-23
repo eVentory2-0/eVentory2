@@ -8,27 +8,28 @@ const SignUp = (props) => {
 
   const { register, handleSubmit } = useForm();
   //const [data, setData] = useState("");
-  let userList = [];
+  
+  // let userList = [];
   
 
-  useEffect(() => {
-    // fetch the data for all accounts
-    fetch('/accounts/', {
-      headers: {
-        'Accept' : 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => { 
-       userList = data.accounts;
-      console.log(data.accounts)
-    })
-    .catch(err => {
-      console.log('were getting an error',err);
-    });
-  },[])
+  // useEffect(() => {
+  //   // fetch the data for all accounts
+  //   fetch('/accounts/', {
+  //     headers: {
+  //       'Accept' : 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     method: 'GET',
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => { 
+  //      userList = data.accounts;
+  //     console.log(data.accounts)
+  //   })
+  //   .catch(err => {
+  //     console.log('were getting an error',err);
+  //   });
+  // },[])
 
   // const signUpRequest = (data) => {
   //   useEffect(() => {
@@ -45,16 +46,17 @@ const SignUp = (props) => {
     <div>
       <h2 className='SI'>Please sign up</h2>
       <form onSubmit={ handleSubmit((data) => {
-        let isValid = true;
-        console.log('userList', userList);
-        for (let i = 0; i < userList.length; i++) {
-          if (userList[i].name === data.name || userList[i].email === data.email) {
-            alert("Username/email already exists");
-            isValid = false;
-            return;
-          }
-        }
-        if(isValid){
+        //let isValid = true;
+        // console.log('userList', userList);
+        // for (let i = 0; i < userList.length; i++) {
+        //   if (userList[i].name === data.name || userList[i].email === data.email) {
+        //     alert("Username/email already exists");
+        //     isValid = false;
+        //     return;
+        //   }
+        // }
+        
+        //if(isValid){
           fetch('/accounts/signup', {
             headers: {
               'Accept' : 'application/json',
@@ -65,29 +67,36 @@ const SignUp = (props) => {
           })
           .then(response => response.json())
           .then(resData => { 
-            console.log("67 console.log ", resData.message)
-            console.log('data', data);
-            console.log('props', props);
-            props.setUser(data);
+            // if the object on resData.message exists - > setUser using the input data
+            // else skip over
+            if (resData.message) {
+              console.log("67 console.log ", resData.message)
+              console.log('data', data);
+              console.log('props', props);
+              props.setUser(data);
+            }
           })
           .catch(err => {
             console.log('were getting an error', err);
+            // send an alert to the user that the login
+            // has already been taken 
+            alert("Username/email already exists");
           });
-        }
+        //}
       })}>
-        <div className="input-container">
+        <div className="input-container" key={13}>
           <input {...register("name")} type="text" id="namesignup" name="name" placeholder="Username" required />
           {/* {renderErrorMessage("Please enter username")} */}
         </div>
-        <div className="input-container">
+        <div className="input-container" key={14}>
           <input {...register("email")} type="text" id="emailsignup" name="email" placeholder="Email" required />
           {/* {renderErrorMessage("Please enter password")} */}
         </div>
-        <div className="input-container">
+        <div className="input-container" key={15}>
           <input {...register("password")} type="password" id="pwsignup" name="password" placeholder="Password" required />
           {/* {renderErrorMessage("Please enter password")} */}
         </div>
-        <div className="input-container">
+        <div className="input-container" key={16}>
           <select {...register("type")} id="dropdownlogin" placeholder='Category'>
             <option key = "" value = "Small Business" label = "Small Business" />
             <option key = "" value = "Online Store" label = "Online Store" />

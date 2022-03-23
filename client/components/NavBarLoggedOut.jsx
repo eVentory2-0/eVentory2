@@ -30,7 +30,7 @@ const NavbarLoggedOut = () => {
      <h1 className='brand' >eVentory</h1>
      {/* <h2 className='subHeader'>Inventory Made Easy</h2> */}
      <a href="aboutUs" className='deadLink1'> About Us </a>
-     <a href="packages" className='deadLink2'> Packages </a>
+     {/* <a href="packages" className='deadLink2'> Packages </a> */}
     </div>
   );
 };

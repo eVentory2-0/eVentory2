@@ -1,12 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 //display :none
 //have container toggle between display block and display none
 
 //Login/Signup compnent
 
-// .LSPage {
-//   display: grid;
-//   grid-auto-columns: 50px;
-// }
+.LSPage {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
 .LoginSignupBox {
     display: flex;
@@ -19,14 +24,14 @@
     border-style: outset;
 
     width: 250px;
-    height: 360px;
+    height: auto;
     //justify-content: center;
     align-items: center;
     border: 3px solid rgb(240, 241, 231); 
     background-color: #28afd8d2;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 500px;
+    // height: 500px;
     padding: 20px;
     width: 320px;
     margin-top: 20px;
@@ -47,7 +52,7 @@
   font-family: sans-serif;
   font-size: 19px;
   font-weight: 600;
-  margin-top: 70px;
+  margin: 20px;
   text-align: center;
 }
 
@@ -174,6 +179,7 @@
 // terms and conditions link
 .Terms {
     display: grid;
+    text-align: center;
     justify-content: center;
     align-items: center;
     margin-left: auto;
@@ -184,20 +190,41 @@
 }
 
 #loginArt1 {
-    max-width: 35%;
+    max-width: 80%;
     max-height: auto;
-    position: absolute;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-top: 80px;
+//     position: absolute;
+//     margin-top: auto;
+//     margin-bottom: auto;
+//     margin-top: 80px;
 }
 
 #loginArt2 {
-  display: flex;
-    max-width: 30%;
+  // display: flex;
+    max-width: 80%;
     max-height: auto;
-    position: absolute;
-    margin-top: 63px;
-    margin-left: 820px;
+    // position: absolute;
+    // margin-top: 63px;
+    // margin-left: 820px;
+    // align-items: center;
+}
+
+
+// MING EDITS
+.LogSign {
+  margin: 0;
+  padding: 0;
+}
+
+#img1 {
+  // height: auto;
+  // width: 400px;
+}
+
+@media screen and (max-width: 500px) {
+  .LSPage {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
 }

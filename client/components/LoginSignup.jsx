@@ -26,11 +26,16 @@ if (isShow){
   } else {
       return (
         <div>
-          <SignUp setUser = {props.setUser}/>
+          <div>
+            <SignUp setUser = {props.setUser}/>
           <div className="button-container">
-          
-        </div>
-          <a href="#" className='toggle' onClick={ handleClick }> Already a member? Log-In here! </a>
+            
+          </div>
+            <a href="#" className='toggle' onClick={ handleClick }> Already a member? Log-In here! </a>
+          </div>
+          <div className="Terms">
+            <a href="Terms"> Terms & Conditions / FAQ </a>
+          </div>
         </div>
     )
   };

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/e-Ventory/e-Ventory-App#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "cors": "^2.8.5",
     "css-loader": "^6.7.1",
     "express": "^4.17.3",

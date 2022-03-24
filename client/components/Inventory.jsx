@@ -11,9 +11,10 @@ const Inventory = (props) => {
       <h4 className = 'quantity-column'>{props.invInfo.quantity}</h4>
       <h4 className = 'other-column' key={15}>{props.invInfo.category.toUpperCase()}</h4>
       <h4 className = 'other-column' key={16}>{props.invInfo.location.toUpperCase()}</h4>
+      
       {/* popup for add items, no info is required. only add info you want changed */}
-      <Popup trigger={<button type="button" className ='update-delete-buttons'>Update</button>}>
-        <form onSubmit={(e) => props.updatedItem(e)} >
+      <Popup trigger={<button type="button" className ='update-button'>Update</button>}>
+        <form id={'updateForm'} onSubmit={(e) => props.updatedItem(e)} >
           <input type="hidden" name="item-id" value={props.invInfo.id} />
           <div className="input-container" key={7}>
             <input type="text" name="item-name" placeholder="Name" value = {undefined}/>
@@ -31,15 +32,17 @@ const Inventory = (props) => {
             <input type="text" name="item-location" placeholder="Location" value = {undefined} />
           </div>
           <div className="button-container" key={12}>
-            <input type="submit" />
+            <input id={'updateSubmit'} type="submit" />
           </div>
         </form>
       </Popup>
+
       {/* delete button */}
       <form onSubmit={(e) => props.deletedItem(e)}>
         <input type="hidden" name ="item-id" value={props.invInfo.id} />
-        <input type="submit" className ='update-delete-buttons' value="Delete"></input>
+        <button type="submit" className ='delete-button' value="Delete">Delete</button>
       </form>
+
     </div>
   );
 };

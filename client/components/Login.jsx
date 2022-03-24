@@ -55,7 +55,7 @@ const Login = (props) => {
         <input {...register("password")} type="password" id="PW" name="password" placeholder="Password" required />
         
       </div>
-      <input type="submit" className="submitbutton" />
+      <button type="submit" className="submitbutton">Submit</button>
     </form>
       
     </div>

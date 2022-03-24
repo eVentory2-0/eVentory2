@@ -1,25 +1,38 @@
 .inventory-container{
+    
     display: grid;  
     padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 2px;
     align-items: center;
     grid-template-columns: [first] 60px repeat(4, 150px) repeat(2, 80px);
+    text-align: center;
+    border-style: solid;
+    border-color: #28afd885;
+    border-radius: 5px;
+    border-width: 0.5px;
 }
 
 .inventory-labels {
     display: grid;  
     padding: 20px;
+    padding-bottom: 5px;
+    text-align: center;
     align-items: center;
     grid-template-columns:  [first] 60px repeat(4, 150px) repeat(2, 100px);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
 }
+
 .scroll {
-    background-color: #c7e4eb;
+    background-color: #28afd885;
     width: 900px;
     height: 500px;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
     border-radius: 10px;
-    
 }
 
 
@@ -29,7 +42,8 @@
   
 
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    background: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    box-shadow: inset 0 0 5px linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
     border-radius: 10px;
   }
 
@@ -45,7 +59,7 @@
 }
 
 .quantity-column {
-    width: 100px;
+    width: 150px;
     text-align: center;
 }
 .other-column {
@@ -54,19 +68,93 @@
     border-bottom: 2px;
 }
 
-.update-delete-buttons {
-    height: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    background-color: #c7d6eb;
-    border-color: #c7ebe4;
-    color: #968b93;
-    
-    
-}
+
 
 .all-inventory {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
 }
+
+// MING
+
+#updateForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+      height: 30px;
+      width: 100px;
+    }
+  
+  }
+  
+  #ADDBUTTON-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+      height: 20px;
+      width: 100px;
+    }
+  }
+  
+  form {
+      margin: 10px;
+  }
+
+  // Inventory Style Updates
+  .update-button {
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 1rem 1.75rem;
+    width: 100%;
+    border: 0;
+    margin-bottom: 5%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    transition-duration: .3s;
+  }
+
+  .update-button:hover {
+    background-image: linear-gradient(-180deg, #1da8e4 0%, rgb(0, 216, 216) 100%);
+    cursor: pointer;
+  }
+
+  
+  .delete-button {
+    background: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 1rem 1.75rem;
+    width: 100%;
+    border: 0;
+    margin-bottom: 5%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px;
+    transition-duration: .3s;
+  }
+
+  .delete-button:hover {
+    background: linear-gradient(-180deg, #1da8e4 0%, rgb(0, 216, 216) 100%);
+    cursor: pointer;
+  }
+
+  #add-button {
+    margin-left: 2.1rem;
+    padding: 1rem 1rem;
+  }

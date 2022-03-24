@@ -25,13 +25,11 @@
 
     width: 250px;
     height: auto;
-    //justify-content: center;
     align-items: center;
     border: 3px solid rgb(240, 241, 231); 
     background-color: #28afd8d2;
     border-radius: 20px;
     box-sizing: border-box;
-    // height: 500px;
     padding: 20px;
     width: 320px;
     margin-top: 20px;
@@ -40,18 +38,20 @@
 //welcome Header
 .welcome {
     color: #eee;
-  font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 30px;
 }
 
 //sign in / sign up header
 .SI {
     color: #eee;
-  font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 20px;
   text-align: center;
 }
@@ -69,8 +69,6 @@
   padding: 5px 20px 5px;
   width: 100%;
   margin-top: 5%;
-  
- 
 }
 // login password input box
 #PW {
@@ -86,7 +84,6 @@
     width: 100%;
     margin-top: 5%;
     margin-bottom: 50%;
-    //width: auto;
 }
 
 // signup name box
@@ -106,7 +103,7 @@
 
 // email signup box
 #emailsignup {
-    background-color: #303245;
+  background-color: #303245;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -121,7 +118,7 @@
 
 // signup password signup box
 #pwsignup {
-    background-color: #303245;
+  background-color: #303245;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -136,7 +133,7 @@
 
 // signup category drop down 
 #dropdownlogin {
-    background-color: #303245;
+  background-color: #303245;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -152,28 +149,23 @@
 
 // submit button style
 .submitbutton {
-      background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
-      border-radius: .5rem;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      display: flex;
-      font-size: 16px;
-      justify-content: center;
-      padding: 1rem 1.75rem;
-      text-decoration: none;
-      width: 100%;
-      border: 0;
-      //margin-top: 40%;
-      margin-bottom: 5%;
-      
-
-    
-    .button-43:hover {
-      background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
-    }
-
-    
+  background: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 1rem 1.75rem;
+  width: 100%;
+  border: 0;
+  margin-bottom: 5%;
+  transition-duration: .3s;
 }
+
+.submitbutton:hover {
+  background: linear-gradient(-180deg, #1da8e4 0%, rgb(0, 216, 216) 100%);
+  cursor: pointer;
+}
+
 
 
 // terms and conditions link
@@ -189,24 +181,30 @@
     
 }
 
-#loginArt1 {
+// HOMEPAGE IMAGE 
+
+#img1{
+  display: flex;
+  justify-content: space-around;
+  #loginArt1 {
     max-width: 80%;
     max-height: auto;
-//     position: absolute;
-//     margin-top: auto;
-//     margin-bottom: auto;
-//     margin-top: 80px;
+    min-height: 200px;
+    min-width: 291.5px;
+  }
 }
 
-#loginArt2 {
-  // display: flex;
-    max-width: 80%;
-    max-height: auto;
-    // position: absolute;
-    // margin-top: 63px;
-    // margin-left: 820px;
-    // align-items: center;
+#img2{
+  display: flex;
+  justify-content: space-around;
+  #loginArt2 {
+      max-width: 70%;
+      max-height: auto;
+      min-height: 170px;
+      min-width: 200px;
+  }
 }
+
 
 
 // MING EDITS
@@ -215,10 +213,7 @@
   padding: 0;
 }
 
-#img1 {
-  // height: auto;
-  // width: 400px;
-}
+
 
 @media screen and (max-width: 500px) {
   .LSPage {

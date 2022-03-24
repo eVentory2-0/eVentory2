@@ -109,45 +109,51 @@ const InventoryDisplay = (props) => {
 
   return (
     <div className='all-inventory'>
-      <div className = 'inventory-labels'>
-        <h4 className = 'id-column'>ID</h4>
-        <h4 className = 'other-column' key={11}>NAME</h4>
-        <h4 className = 'quantity-column'>QUANTITY</h4>
-        <h4 className = 'other-column' key={12}>CATEGORY</h4>
-        <h4 className = 'other-column' key={13}>LOCATION</h4>
+      <div className='inventory-labels'>
+
+        <h4 className='id-column' >ID</h4>
+        <h4 className='other-column' key={11}>NAME</h4>
+        <h4 className='quantity-column'>QUANTITY</h4>
+        <h4 className='other-column' key={12}>CATEGORY</h4>
+        <h4 className='other-column' key={13}>LOCATION</h4>
+
+        <div id={'ADDBUTTON'}>
+          <Popup trigger={<button type="button" className ='update-button' id='add-button'>Add Item</button>} position="right center">
+            <form id={'ADDBUTTON-form'} onSubmit={(e) => addedItem(e)} >
+              <div className="input-container" key={1}>
+                <input type="hidden" name="user-id" value = {userId} />
+              </div>
+              <div className="input-container" key={2}>
+                <input type="text" name="item-name" placeholder="Name" required />
+              </div>
+              <div className="input-container" key={3}>
+                <input type="number" name="item-quantity" placeholder="Quantity" required />
+              </div>
+              <div className="input-container" key={4}>
+                <input type="text" name="item-info" placeholder="Info" />
+              </div>
+              <div className="input-container" key={5}>
+                <input type="text" name="item-category" placeholder="Category" required />
+              </div>
+              <div className="input-container" key={6}>
+                <input type="text" name="item-location" placeholder="Location" required />
+              </div>
+              <div className="button-container" key={60}>
+                <input type="submit" />
+              </div>
+            </form>
+          </Popup>
+        </div>
+
       </div>
+
+      
       
       {/* whole div needs to be added per item in inventory array */}
       <div className = 'scroll'>
         {inv}
       </div>
-      <div>
-        <Popup trigger={<button type="button" className ='update-delete-buttons'>Add Item</button>} position="right center">
-          <form onSubmit={(e) => addedItem(e)} >
-            <div className="input-container" key={1}>
-              <input type="hidden" name="user-id" value = {userId} />
-            </div>
-            <div className="input-container" key={2}>
-              <input type="text" name="item-name" placeholder="Name" required />
-            </div>
-            <div className="input-container" key={3}>
-              <input type="number" name="item-quantity" placeholder="Quantity" required />
-            </div>
-            <div className="input-container" key={4}>
-              <input type="text" name="item-info" placeholder="Info" />
-            </div>
-            <div className="input-container" key={5}>
-              <input type="text" name="item-category" placeholder="Category" required />
-            </div>
-            <div className="input-container" key={6}>
-              <input type="text" name="item-location" placeholder="Location" required />
-            </div>
-            <div className="button-container" key={60}>
-              <input type="submit" />
-            </div>
-          </form>
-        </Popup>
-      </div>
+      
     </div>
 
   );

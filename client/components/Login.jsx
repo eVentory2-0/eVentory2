@@ -46,31 +46,19 @@ const Login = (props) => {
             });
 
           // create a post request then in the body send username and password
-          // setData(JSON.stringify(data))
-        })}
-      >
-        <div className="input-container">
-          <input
-            {...register("username")}
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-            required
-          />
-        </div>
-        <div className="input-container">
-          <input
-            {...register("password")}
-            type="password"
-            id="PW"
-            name="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <input type="submit" className="submitbutton" />
-      </form>
+         // setData(JSON.stringify(data))
+      })}>
+      <div className="input-container" >
+        <input {...register("username")} type="text" id="username" name="username" placeholder="Username" required />
+        
+      </div>
+      <div className="input-container">
+        <input {...register("password")} type="password" id="PW" name="password" placeholder="Password" required />
+        
+      </div>
+      <button type="submit" className="submitbutton">Submit</button>
+    </form>
+      
     </div>
   );
 };

@@ -1,10 +1,9 @@
-import React from 'react';
-import '../stylesheets/Login.scss';
-import { useState } from 'react';
+import React from "react";
+import "../stylesheets/Login.scss";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, } from 'react-router-dom';
+import { Link } from "react-router-dom";
 //Login component
-
 
 //let options = {
 //   method: 'POST',
@@ -16,34 +15,36 @@ import { Link, } from 'react-router-dom';
 
 const Login = (props) => {
   // useForm hook returns an object containing a few properties.
-    //register method helps register an input field into react hook form so that it is available for validation.
-    //handleSubmit can handle two functions as arguments. first function passed as an arg will be onvoked along with registered field values when the form validation is successfull.
-  const {register, handleSubmit} = useForm();
+  //register method helps register an input field into react hook form so that it is available for validation.
+  //handleSubmit can handle two functions as arguments. first function passed as an arg will be onvoked along with registered field values when the form validation is successfull.
+  const { register, handleSubmit } = useForm();
 
   return (
     <div>
-      <h2 className='SI'>Please sign in</h2>
-      <form className="LoginBox" onSubmit={handleSubmit((data) => {
-        //fetch request to server w/ email & password for login
-        fetch('/accounts/login', {
-          headers: {
-            'Accept' : 'application/json',
-            'Content-Type': 'application/json'
-          },
-          method: 'POST',
-          body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => { 
-          props.setUser(data.account);
-        })
-        .catch(err => {
-          console.log('were getting an error',err);
-          alert('Wrong username/password');
-          // props.setUser({user: {name: undefined}}); 
-          return;
-        });
-        
+      <h2 className="SI">Please sign in</h2>
+      <form
+        className="LoginBox"
+        onSubmit={handleSubmit((data) => {
+          //fetch request to server w/ email & password for login
+          fetch("/accounts/login", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              props.setUser(data.account);
+            })
+            .catch((err) => {
+              console.log("were getting an error", err);
+              alert('Wrong username/password');
+              // props.setUser({user: {name: undefined}});
+              // return;
+            });
+
           // create a post request then in the body send username and password
          // setData(JSON.stringify(data))
       })}>

@@ -1,19 +1,18 @@
 const itemsController = {};
-const client = require('../models/eventoryModel');
+const dataBase = require('../models/eventoryModel');
 
 itemsController.getAllItems = async (req , res, next ) => {
   
   const { id } = req.params;
 
   try {
-    const dbRes = await client.query('SELECT * FROM items WHERE items.account_id = $1', [id]);
+    const dbRes = await dataBase.query('SELECT * FROM items WHERE items.account_id = $1', [id]);
     res.locals.items = [...dbRes.rows];
-    console.log('GETTING TO THE GET ALL USERS MIDDLEWARE');
     return next();
   }
   catch (err) {
     return next({
-      log: 'Error Express - itemsController.getAllUsers',
+      log: 'Error Express - itemsController.getAllItems',
       status: 500,
       message: {err} 
     })
@@ -37,14 +36,14 @@ itemsController.updateItem = async (req , res, next ) => {
       }
     }
     // grab old item 
-      const dbItemRes = await client.query('SELECT * FROM items WHERE items.id = $1', [id]);
+      const dbItemRes = await dataBase.query('SELECT * FROM items WHERE items.id = $1', [id]);
 
     // spread new info into old item
     const newObject = { ...dbItemRes.rows[0], ...newUpdatedItem };
 
     const { name, info, quantity, category, location } = newObject;
 
-    const dbRes = await client.query(
+    const dbRes = await dataBase.query(
     "UPDATE items SET name = $1, info = $2, quantity = $3, category = $4, location = $5 WHERE id = $6;"  
     , [name, info, quantity, category, location, id]);
     console.log(dbRes.command);
@@ -70,7 +69,7 @@ itemsController.createItem = async (req , res, next ) => {
   console.log(req.body.items);
 
   try {
-    const dbRes = await client.query('INSERT INTO items (name, info, quantity, category, location, account_id) VALUES ($1, $2, $3, $4, $5, $6)', [name, info, quantity, category, location, account_id]);
+    const dbRes = await dataBase.query('INSERT INTO items (name, info, quantity, category, location, account_id) VALUES ($1, $2, $3, $4, $5, $6)', [name, info, quantity, category, location, account_id]);
     console.log(dbRes);
     res.locals.createdItem = { name, info, quantity, category, location, account_id };
     return next();
@@ -90,7 +89,7 @@ itemsController.deleteItem = async (req , res, next ) => {
   const  item_id  = req.params.itemId;
 
   try {
-    const dbRes = await client.query('DELETE FROM items WHERE ID = $1', [item_id]);
+    const dbRes = await dataBase.query('DELETE FROM items WHERE ID = $1', [item_id]);
     // console.log(dbRes);
     return next();
   }

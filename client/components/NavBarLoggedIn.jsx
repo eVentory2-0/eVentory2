@@ -26,7 +26,7 @@ will contain on logged in age:
 
 const NavBarLoggedIn = () => {
   return (
-    <div className='LoggedOut'>
+    <div className='LoggedIn'>
      <img className='logo' src="https://static.wixstatic.com/media/380eea_d2d6e4ed1151439b8d4d18f1e3950d5b~mv2.png/v1/fill/w_320,h_320,al_c,usm_0.66_1.00_0.01,enc_auto/Inventory2.png" />
      <h1 className='brand' >eVentory</h1>
      {/* <a href="aboutUs" className='deadLink1'> About Us </a>

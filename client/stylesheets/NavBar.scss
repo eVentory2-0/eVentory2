@@ -8,7 +8,6 @@
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-    // border: 5px  #28afd8d2;
     background: #28afd8d2;
     border-radius: 5px;
     
@@ -18,8 +17,6 @@
 .LoggedOut {
     display: flex;
     flex-direction: row;
-    //margin-left: auto;
-    //margin-right: auto;
     align-items: center;
     border: 5px solid #28afd8d2;
     background:  #28afd8d2;
@@ -36,6 +33,7 @@
 .brand {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
+    font-weight: 100;
     font-size: 50px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
@@ -44,6 +42,7 @@
 .subHeader {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
+    font-weight: 100;
     font-size: 20px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
@@ -53,12 +52,11 @@
 .deadLink1 {
     display: flex;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
     font-style: normal;
     font-size: 25px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
-    //align-self: right;
-    //text-align: right;
     float: right;
     position: absolute;
     right: 25px;
@@ -69,12 +67,11 @@
 .deadLink2 {
     display: flex;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
     font-style: normal;
     font-size: 25px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
-    //align-self: right;
-    //text-align: right;
     float: right;
     position: absolute;
     right: 150px;
@@ -84,12 +81,11 @@
 #inventoryLink {
     display: flex;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
     font-style: normal;
     font-size: 25px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
-    //align-self: right;
-    //text-align: right;
     float: right;
     position: absolute;
     right: 150px;
@@ -98,12 +94,11 @@
 #accountLink {
     display: flex;
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
     font-style: normal;
     font-size: 25px;
     color: rgb(250, 250, 250);
     padding-left: 1%;
-    //align-self: right;
-    //text-align: right;
     float: right;
     position: absolute;
     right: 25px;

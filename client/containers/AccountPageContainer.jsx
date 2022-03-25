@@ -9,7 +9,6 @@ const AccountPageContainer = (props) => {
   console.log('Account Props: ', props);
   return (
     <div>
-      <h1>hey yall</h1>
       <UpdatePassword user={props.user}/>
     </div>
   );

@@ -149,6 +149,10 @@ accountsController.login = async (req, res, next) => {
  */
 accountsController.changePassword = async (req, res, next) => {
 
+  // console.log('req params name: ',req.params.name);
+  // console.log('req body: ', req.body )
+  // console.log('req body password: ', req.body.password);
+  // console.log('req body new password: ', req.body.newPassword);
   try {
 
     const { name } = req.params;
@@ -167,15 +171,16 @@ accountsController.changePassword = async (req, res, next) => {
     //check if the account password matches the req body password
     const verified = bcrypt.compareSync(password, dbRes.rows[0].password);
 
+    console.log('verified: ',verified);
   
     // If verified we will update the password
     if (verified) {
 
       // get the new password from the body
-      const { newpassword } = req.body;
+      const { newPassword } = req.body;
 
       // BCRYPT
-      const passwordHash = bcrypt.hashSync(newpassword, 10);
+      const passwordHash = bcrypt.hashSync(newPassword, 10);
 
       // update the password where the account name is equal to name
       const query = {
@@ -189,7 +194,7 @@ accountsController.changePassword = async (req, res, next) => {
       res.locals.message = "Password has been updated";
 
       // go to the next middleware
-      next();
+      return next();
 
     } else {
       // if the passwords dont match return an error

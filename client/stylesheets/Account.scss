@@ -1,0 +1,51 @@
+
+
+.accountUpdateContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+    background-color: rgb(240, 241, 231);
+    
+    border-style: outset;
+
+    width: 250px;
+    height: auto;
+    align-items: center;
+    border: 3px solid rgb(240, 241, 231); 
+    background-color: #28afd8d2;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 320px;
+    margin-top: 20px;
+}
+
+#verifyPass {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 15px;
+    height:100%;
+    outline: 0;
+    padding: 5px 20px 5px;
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  #newPass {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 15px;
+    height:100%;
+    outline: 0;
+    padding: 5px 20px 5px;
+    width: 100%;
+    margin-top: 5%;
+  }

@@ -1,4 +1,5 @@
 const client = require("../models/eventoryModel");
+const bcrypt = require('bcryptjs');
 
 const accountsController = {};
 
@@ -56,19 +57,25 @@ const accountsController = {};
 accountsController.createAccount = async (req, res, next) => {
   // get the name, email, password, type from the req.body
   const { name, email, password, type } = req.body;
+  
+  const passwordHash = bcrypt.hashSync(password, 10);
+
   try {
     // create an object with the query text, and the values to insert into the query
     const query = {
       text: "INSERT INTO accounts (name, email, password, type) VALUES ($1, $2, $3, $4) RETURNING *",
-      values: [name, email, password, type],
+      values: [name, email, passwordHash, type],
     };
     // query the database for all accounts in accounts
-    const result = await client.query(query);
+    const result = await client.query(query); //<----- TURN BACK ON
 
-    console.log("Result: ", result.rows[0]);
+    // console.log("Result: ", result.rows[0]);
     // store the result of the query into res.locals.accounts
-    res.locals.message = result.rows[0];
-    // return next
+    res.locals.message = result.rows[0]; //<----- TURN BACK ON
+    
+    // TESTING
+    // res.locals.message = "testing"         
+
     return next();
   } catch (err) {
     // if there is an err, return the errorObj to the global error handler
@@ -86,8 +93,9 @@ accountsController.createAccount = async (req, res, next) => {
 accountsController.login = async (req, res, next) => {
   // get the username and password from the req body
   const { username, password } = req.body;
-  // get the account information from the database
+
   try {
+
     // select all users with the username
     const query = {
       text: "SELECT * from accounts WHERE name = $1",
@@ -96,11 +104,28 @@ accountsController.login = async (req, res, next) => {
     // query the database, assign the result in dbRes
     const dbRes = await client.query(query);
     //check if the account password matches the req body password
-    if (dbRes.rows[0].password === password) {
+    const verified = bcrypt.compareSync(password, dbRes.rows[0].password);
+
+    // console.log('VERIFIED!!!!: ', verified);
+
+    if (verified){
+      // destruct id, name, email, type from db response
+      const { id, name, email, type } = dbRes.rows[0];
+
+      console.log(id, name, email, type);
+
+      const sendUser = {
+        id,
+        name,
+        email,
+        type
+      }
+
       // assign res.locals.account the account information
-      res.locals.account = dbRes.rows[0];
+      res.locals.account = sendUser;
       // go to the next middleware
       next();
+
     } else {
       // if the passwords dont match return an error
       return next({
@@ -123,21 +148,63 @@ accountsController.login = async (req, res, next) => {
  * Middleware to change password
  */
 accountsController.changePassword = async (req, res, next) => {
-  // get the name from params
-  const { name } = req.params;
-  // get the new password from the body
-  const { password } = req.body;
+
+  // console.log('req params name: ',req.params.name);
+  // console.log('req body: ', req.body )
+  // console.log('req body password: ', req.body.password);
+  // console.log('req body new password: ', req.body.newPassword);
   try {
-    // update the password where the account name is equal to name
-    const query = {
-      text: "UPDATE accounts SET password = $2 WHERE accounts.name = $1",
-      values: [name, password],
+
+    const { name } = req.params;
+
+    const { password } = req.body;
+
+    const firstQuery = {
+
+      text: "SELECT * from accounts WHERE name = $1",
+      values: [name],
+
     };
-    await client.query(query);
-    // assign res.locals.message a string stating the password has been updated
-    res.locals.message = "Password has been updated";
-    // go to the next middleware
-    next();
+
+    // query the database, assign the result in dbRes
+    const dbRes = await client.query(firstQuery);
+    //check if the account password matches the req body password
+    const verified = bcrypt.compareSync(password, dbRes.rows[0].password);
+
+    console.log('verified: ',verified);
+  
+    // If verified we will update the password
+    if (verified) {
+
+      // get the new password from the body
+      const { newPassword } = req.body;
+
+      // BCRYPT
+      const passwordHash = bcrypt.hashSync(newPassword, 10);
+
+      // update the password where the account name is equal to name
+      const query = {
+        text: "UPDATE accounts SET password = $2 WHERE accounts.name = $1",
+        values: [name, passwordHash],
+      };
+
+      await client.query(query);
+
+      // assign res.locals.message a string stating the password has been updated
+      res.locals.message = "Password has been updated";
+
+      // go to the next middleware
+      return next();
+
+    } else {
+      // if the passwords dont match return an error
+      return next({
+        log: "Error Express - accountsController.changePassword, password does not match",
+        status: 500,
+        message: { err: "Password does not match, Cannot update password" },
+      });
+
+    }
   } catch (err) {
     // if there is an err, return the errorObj to the global error handler
     return next({
